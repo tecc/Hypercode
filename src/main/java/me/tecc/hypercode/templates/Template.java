@@ -3,7 +3,7 @@ package me.tecc.hypercode.templates;
 import com.google.gson.JsonObject;
 
 /**
- * Holds data about a singular template.
+ * Wrapper class for Hypercube templates
  */
 public class Template implements Cloneable {
     final JsonObject data;

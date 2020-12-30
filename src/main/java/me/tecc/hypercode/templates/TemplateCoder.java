@@ -45,7 +45,7 @@ public class TemplateCoder {
      * @param encoded The encoded string to be decoded
      * @return The decoded template.
      */
-    public static Template decode(String encoded) {
+    public static JsonObject decode(String encoded) {
         byte[] bytes = Base64.getDecoder().decode(encoded);
         try {
             // read the gzipped data from byte array
@@ -55,7 +55,7 @@ public class TemplateCoder {
 
             // json parsing
             JsonElement jsonElement = JsonParser.parseString(json);
-            return new Template(jsonElement.getAsJsonObject());
+            return jsonElement.getAsJsonObject();
         } catch (IOException e) {
             System.out.println("Couldn't decode template, printing stack trace.");
             e.printStackTrace();
