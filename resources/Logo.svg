@@ -9,20 +9,23 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="7380"
+   width="5310.3188"
    height="1080"
-   viewBox="0 0 1952.625 285.75001"
+   viewBox="0 0 1405.0219 285.75001"
    version="1.1"
    id="svg8"
    inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
-   sodipodi:docname="Logo.svg">
+   sodipodi:docname="Logo.svg"
+   inkscape:export-filename="/home/tecc/Projects/Hypercode/resources/Logo Monochrome.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
   <defs
      id="defs2">
     <inkscape:perspective
        sodipodi:type="inkscape:persp3d"
        inkscape:vp_x="0 : 142.875 : 1"
        inkscape:vp_y="0 : 1000 : 0"
-       inkscape:vp_z="285.75 : 142.875 : 1"
+       inkscape:vp_z="285.75001 : 142.875 : 1"
        inkscape:persp3d-origin="142.87501 : 95.250003 : 1"
        id="perspective354" />
   </defs>
@@ -33,9 +36,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.0875"
-     inkscape:cx="2443.8227"
-     inkscape:cy="373.35158"
+     inkscape:zoom="0.0625"
+     inkscape:cx="2754.6111"
+     inkscape:cy="1777.9926"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -119,35 +122,64 @@
        style="fill:none;stroke:#0a4a81;stroke-width:21.43124962;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        sodipodi:type="star" />
     <path
-       sodipodi:type="star"
-       style="fill:none;stroke:#1f90ef;stroke-width:19.72317314;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="path380"
-       sodipodi:sides="6"
-       sodipodi:cx="123.73338"
-       sodipodi:cy="154.12498"
-       sodipodi:r1="131.48782"
-       sodipodi:r2="113.87181"
-       sodipodi:arg1="0.52359878"
-       sodipodi:arg2="1.0471976"
-       inkscape:flatsided="true"
-       inkscape:rounded="0"
-       inkscape:randomized="0"
-       d="M 237.60518,219.8689 123.73338,285.61281 9.8615875,219.8689 9.861588,88.381072 123.73338,22.637161 237.60518,88.381073 Z"
+       style="fill:none;stroke:#1f90ef;stroke-width:19.72299957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        inkscape:transform-center-x="-1.1133026e-05"
-       inkscape:transform-center-y="-2.639118e-06" />
-    <flowRoot
-       xml:space="preserve"
-       id="flowRoot849"
+       inkscape:transform-center-y="-2.639118e-06"
+       d="M 237.60518,219.8689 123.73338,285.61281 9.8615875,219.8689 9.861588,88.381072 123.73338,22.637161 237.60518,88.381073 Z"
+       id="path380"
+       inkscape:connector-curvature="0" />
+    <g
+       aria-label="Hypercode"
+       transform="matrix(1.059726,0,0,1.059726,-908.15882,26.076216)"
        style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:40px;line-height:1.25;font-family:Montserrat;-inkscape-font-specification:'Montserrat Semi-Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       transform="matrix(1.578241,0,0,1.578241,-1492.3283,-60.449009)"><flowRegion
-         id="flowRegion851"
-         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-family:Montserrat;-inkscape-font-specification:'Montserrat Semi-Bold'"><rect
-           id="rect853"
-           width="1462.8572"
-           height="485.71429"
-           x="1108.5714"
-           y="11.428572"
-           style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-family:Montserrat;-inkscape-font-specification:'Montserrat Semi-Bold'" /></flowRegion><flowPara
-         id="flowPara855"
-         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:192px;font-family:Montserrat;-inkscape-font-specification:'Montserrat Semi-Bold'">Hypercode</flowPara></flowRoot>  </g>
+       id="flowRoot849"
+       inkscape:label="flowRoot849">
+      <path
+         d="m 1246.0443,53.49369 v 134.4 h -24.96 v -57.6 h -69.504 v 57.6 h -24.96 V 53.493597 l 24.96,9.3e-5 v 55.488 h 69.504 v -55.488 z"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:192px;font-family:Montserrat;-inkscape-font-specification:'Montserrat Semi-Bold'"
+         id="path834"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccccccccc" />
+      <path
+         d="m 1375.8362,85.36569 -48,110.784 q -6.72,16.704 -16.32,23.424 -9.6,6.912 -23.232,6.912 -7.68,0 -15.168,-2.496 -7.488,-2.496 -12.288,-6.912 l 9.6,-17.664 q 3.456,3.264 8.064,5.184 4.8,1.92 9.6,1.92 6.336,0 10.368,-3.264 4.224,-3.264 7.68,-10.944 l 1.728,-4.032 -44.736,-102.912 h 24.96 l 32.256,75.84 32.448,-75.84 z"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:192px;font-family:Montserrat;-inkscape-font-specification:'Montserrat Semi-Bold'"
+         id="path836"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 1447.644,84.21369 q 14.976,0 26.688,6.528 11.904,6.528 18.624,18.432 6.72,11.904 6.72,27.456 0,15.552 -6.72,27.648 -6.72,11.904 -18.624,18.432 -11.712,6.528 -26.688,6.528 -20.736,0 -32.832,-13.824 v 49.728 h -24 v -139.776 h 22.848 v 13.44 q 5.952,-7.296 14.592,-10.944 8.832,-3.648 19.392,-3.648 z m -2.688,84.48 q 13.248,0 21.696,-8.832 8.64,-8.832 8.64,-23.232 0,-14.4 -8.64,-23.232 -8.448,-8.832 -21.696,-8.832 -8.64,0 -15.552,4.032 -6.912,3.84 -10.944,11.136 -4.032,7.296 -4.032,16.896 0,9.6 4.032,16.896 4.032,7.296 10.944,11.328 6.912,3.84 15.552,3.84 z"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:192px;font-family:Montserrat;-inkscape-font-specification:'Montserrat Semi-Bold'"
+         id="path838"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 1618.9078,137.20569 q 0,2.496 -0.384,7.104 h -80.448 q 2.112,11.328 10.944,18.048 9.024,6.528 22.272,6.528 16.896,0 27.84,-11.136 l 12.864,14.784 q -6.912,8.256 -17.472,12.48 -10.56,4.224 -23.808,4.224 -16.896,0 -29.76,-6.72 -12.864,-6.72 -19.968,-18.624 -6.912,-12.096 -6.912,-27.264 0,-14.976 6.72,-26.88 6.912,-12.096 19.008,-18.816 12.096,-6.72 27.264,-6.72 14.976,0 26.688,6.72 11.904,6.528 18.432,18.624 6.72,11.904 6.72,27.648 z m -51.84,-33.792 q -11.52,0 -19.584,6.912 -7.872,6.72 -9.6,18.048 h 58.176 q -1.536,-11.136 -9.408,-18.048 -7.872,-6.912 -19.584,-6.912 z"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:192px;font-family:Montserrat;-inkscape-font-specification:'Montserrat Semi-Bold'"
+         id="path840"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 1664.7957,100.34169 q 10.368,-16.128 36.48,-16.128 v 22.848 q -3.072,-0.576 -5.568,-0.576 -14.016,0 -21.888,8.256 -7.872,8.064 -7.872,23.424 v 49.728 h -24 v -102.528 h 22.848 z"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:192px;font-family:Montserrat;-inkscape-font-specification:'Montserrat Semi-Bold'"
+         id="path842"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 1767.7073,189.23769 q -15.936,0 -28.608,-6.72 -12.672,-6.72 -19.776,-18.624 -7.104,-12.096 -7.104,-27.264 0,-15.168 7.104,-27.072 7.104,-11.904 19.584,-18.624 12.672,-6.72 28.8,-6.72 15.168,0 26.496,6.144 11.52,6.144 17.28,17.664 l -18.432,10.752 q -4.416,-7.104 -11.136,-10.56 -6.528,-3.648 -14.4,-3.648 -13.44,0 -22.272,8.832 -8.832,8.64 -8.832,23.232 0,14.592 8.64,23.424 8.832,8.64 22.464,8.64 7.872,0 14.4,-3.456 6.72,-3.648 11.136,-10.752 l 18.432,10.752 q -5.952,11.52 -17.472,17.856 -11.328,6.144 -26.304,6.144 z"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:192px;font-family:Montserrat;-inkscape-font-specification:'Montserrat Semi-Bold'"
+         id="path844"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 1876.763,189.23769 q -15.552,0 -28.032,-6.72 -12.48,-6.72 -19.584,-18.624 -6.912,-12.096 -6.912,-27.264 0,-15.168 6.912,-27.072 7.104,-11.904 19.584,-18.624 12.48,-6.72 28.032,-6.72 15.744,0 28.224,6.72 12.48,6.72 19.392,18.624 7.104,11.904 7.104,27.072 0,15.168 -7.104,27.264 -6.912,11.904 -19.392,18.624 -12.48,6.72 -28.224,6.72 z m 0,-20.544 q 13.248,0 21.888,-8.832 8.64,-8.832 8.64,-23.232 0,-14.4 -8.64,-23.232 -8.64,-8.832 -21.888,-8.832 -13.248,0 -21.888,8.832 -8.448,8.832 -8.448,23.232 0,14.4 8.448,23.232 8.64,8.832 21.888,8.832 z"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:192px;font-family:Montserrat;-inkscape-font-specification:'Montserrat Semi-Bold'"
+         id="path846"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 2054.9387,45.42969 v 142.464 h -23.04 v -13.248 q -5.952,7.296 -14.784,10.944 -8.64,3.648 -19.2,3.648 -14.784,0 -26.688,-6.528 -11.712,-6.528 -18.432,-18.432 -6.72,-12.096 -6.72,-27.648 0,-15.552 6.72,-27.456 6.72,-11.904 18.432,-18.432 11.904,-6.528 26.688,-6.528 10.176,0 18.624,3.456 8.448,3.456 14.4,10.368 v -52.608 z m -54.144,123.264 q 8.64,0 15.552,-3.84 6.912,-4.032 10.944,-11.328 4.032,-7.296 4.032,-16.896 0,-9.6 -4.032,-16.896 -4.032,-7.296 -10.944,-11.136 -6.912,-4.032 -15.552,-4.032 -8.64,0 -15.552,4.032 -6.912,3.84 -10.944,11.136 -4.032,7.296 -4.032,16.896 0,9.6 4.032,16.896 4.032,7.296 10.944,11.328 6.912,3.84 15.552,3.84 z"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:192px;font-family:Montserrat;-inkscape-font-specification:'Montserrat Semi-Bold'"
+         id="path848"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 2182.8104,137.20569 q 0,2.496 -0.384,7.104 h -80.448 q 2.112,11.328 10.944,18.048 9.024,6.528 22.272,6.528 16.896,0 27.84,-11.136 l 12.864,14.784 q -6.912,8.256 -17.472,12.48 -10.56,4.224 -23.808,4.224 -16.896,0 -29.76,-6.72 -12.864,-6.72 -19.968,-18.624 -6.912,-12.096 -6.912,-27.264 0,-14.976 6.72,-26.88 6.912,-12.096 19.008,-18.816 12.096,-6.72 27.264,-6.72 14.976,0 26.688,6.72 11.904,6.528 18.432,18.624 6.72,11.904 6.72,27.648 z m -51.84,-33.792 q -11.52,0 -19.584,6.912 -7.872,6.72 -9.6,18.048 h 58.176 q -1.536,-11.136 -9.408,-18.048 -7.872,-6.912 -19.584,-6.912 z"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:192px;font-family:Montserrat;-inkscape-font-specification:'Montserrat Semi-Bold'"
+         id="path850"
+         inkscape:connector-curvature="0" />
+    </g>
+  </g>
 </svg>
