@@ -1,10 +1,10 @@
 package me.tecc.hypercode.language.lexing;
 
 public class Token {
-    Type type = Type.UNKNOWN;
-    String content = "";
+    public Type type = Type.UNKNOWN;
+    public String content = "";
 
-    enum Type {
+    public enum Type {
         UNKNOWN,
         KEYWORD,
         STRING,
