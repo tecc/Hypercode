@@ -8,6 +8,11 @@ import com.google.gson.JsonObject;
 public class Template implements Cloneable {
     final JsonObject data;
 
+    /**
+     * The template for Hypercube
+     *
+     * @param data The NBT Data for the Template
+     */
     public Template(JsonObject data) {
         this.data = data;
     }
