@@ -7,6 +7,7 @@ import me.tecc.hypercode.cli.HelpCommand;
 import me.tecc.hypercode.templates.TemplateCoder;
 import org.apache.commons.cli.ParseException;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,8 +20,11 @@ public class Hypercode {
             new CompileCommand()
     );
 
-    public static void main(String[] args) throws ParseException {
-        System.out.println("Hypercode CLI");
+    public static HypercodeMeta meta;
+
+    public static void main(String[] args) throws ParseException, IOException {
+        meta = HypercodeMeta.load();
+        System.out.printf("Hypercode CLI - Version %s for patch %s\n", meta.version(), meta.hypercubeVersion());
         System.out.println("Copyright (c) 2020 Technotype, MarcusSlover & 1pe. All rights reserved.");
         if (args.length < 1) {
             System.out.println("No command provided, resorting to help.");

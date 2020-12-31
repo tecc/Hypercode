@@ -6,11 +6,20 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.lang3.StringUtils;
 
 public class HelpCommand extends CLICommand {
+    private static CommandUsage getUsage() {
+        CommandUsage usage = new CommandUsage();
+        usage.addArgument(
+                "command",
+                "The command to get help for. If omitted, prints a list of commands.",
+                true);
+        return usage;
+    }
 
     public HelpCommand() {
         super(
                 new String[]{ "help", "h", "usage", "u" },
-                "Displays information about the Hypercode CLI."
+                "Displays information about the Hypercode CLI.",
+                getUsage()
         );
     }
 
@@ -20,7 +29,11 @@ public class HelpCommand extends CLICommand {
             String commandName = cmd.getArgs()[0];
             CLICommand command = Hypercode.getCommand(commandName);
             HelpFormatter h = new HelpFormatter();
-            h.printHelp("hypercode " + commandName + " [options]", options);
+            h.printHelp("hypercode " + commandName + " " + command.usage.getUsageString(), options);
+            if (command.usage.argumentCount() > 0) {
+                System.out.println("Arguments:");
+                System.out.println(command.usage.getArgumentDescription(4));
+            }
             return;
         }
 

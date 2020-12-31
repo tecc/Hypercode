@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 public abstract class CLICommand {
     List<String> names;
     String description;
+    CommandUsage usage;
     Options options;
 
     /**
@@ -22,6 +23,7 @@ public abstract class CLICommand {
      * @param description The description of the command.
      *
      * @see #CLICommand(String[], String, Options)
+     * @see #CLICommand(String[], String, CommandUsage, Options)
      */
     public CLICommand(String[] names, String description) {
         this(names, description, new Options());
@@ -33,13 +35,41 @@ public abstract class CLICommand {
      *              {@code names[0]} is the display name.
      * @param description The description of the command.
      * @param options The options for this command.
+     *
+     * @see #CLICommand(String[], String, CommandUsage, Options)
      */
     public CLICommand(String[] names, String description, Options options) {
+        this(names, description, CommandUsage.getDefaultUsage(), options);
+    }
+
+    /**
+     * Creates a CLI command.
+     *
+     * @param names The names that can be used when trying to invoke this command.
+     *              {@code names[0]} is the display name.
+     * @param description The description of the command.
+     * @param usage The usage for this command.
+     */
+    public CLICommand(String names[], String description, CommandUsage usage) {
+        this(names, description, usage, new Options());
+    }
+
+    /**
+     * Creates a CLI command.
+     *
+     * @param names The names that can be used when trying to invoke this command.
+     *              {@code names[0]} is the display name.
+     * @param description The description of this command.
+     * @param usage The usage for this command.
+     * @param options The options for this command.
+     */
+    public CLICommand(String[] names, String description, CommandUsage usage, Options options) {
         this.names = Arrays.stream(names)
                 .map(String::toLowerCase)
                 .collect(Collectors.toList());
         this.description = description;
         this.options = options;
+        this.usage = usage;
     }
 
     /**

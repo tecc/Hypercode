@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'com.github.johnrengelman.shadow' version '6.1.0'
+    id 'application'
 }
 
 group 'me.tecc'
@@ -21,6 +21,26 @@ dependencies {
     implementation 'commons-io:commons-io:2.8.0'
     implementation 'org.apache.commons:commons-lang3:3.11'
 }
+
+task createMetaFile() {
+    doLast {
+        def dir = processResources.destinationDir
+        dir.mkdirs()
+        new File(dir, "hm.json").text =
+                """{
+    "version": "${project.version}", 
+    "hypercubeVersion": "${hypercubeVersion}"
+}"""
+    }
+}
+
+jar.dependsOn createMetaFile
+
+application {
+    mainClass = "me.tecc.hypercode.Hypercode"
+}
+
+startScripts.applicationName = "hypercode"
 
 test {
     useJUnitPlatform()
