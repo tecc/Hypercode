@@ -1,3 +1,9 @@
+---
+layout: default
+title: Template Format
+parent: Reference
+has_children: false
+---
 # Hypercube Template Format
 > By 1pe and Technotype
 

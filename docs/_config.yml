@@ -1,1 +1,2 @@
-theme: jekyll-theme-hacker
+remote_theme: pmarsceill/just-the-docs
+logo: "https://raw.githubusercontent.com/tecc/Hypercode/dev/resources/Logo.svg"

@@ -1,3 +1,11 @@
+---
+layout: default
+title: Syntax
+parent: Language
+grand_parent: Reference
+has_children: false
+---
+
 # Hypercode Language Syntax
 
 ## Code blocks
