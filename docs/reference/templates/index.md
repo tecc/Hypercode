@@ -104,6 +104,7 @@ All numbers are stored as 64-bit signed integers.
 
 <details>
 <summary>Sound types</summary>
+
 DiamondFire sound IDs are custom, and then when played mapped to their corresponding Minecraft sound.
 
 | Name                                        | Minecraft ID                                   |
@@ -1021,6 +1022,5 @@ Hypercube has 3 Variable Scopes These are
 | `x`         | The X coordinate                              | Double                          |
 | `y`         | The Y coordinate                              | Double                          |
 | `z`         | The Z coordinate                              | Double                          |
-
 
 ### Targets

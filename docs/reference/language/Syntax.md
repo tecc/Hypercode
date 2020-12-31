@@ -97,6 +97,15 @@ macro <identifier>([identifier...]) {
 }
 ```
 
+### `native`
+
+Denotes a variable, function, or macro as being defined outside the code.
+
+Usage:
+```hypercode
+native <var/function/macro declaration>
+```
+
 ## Identifiers
 
 An identifier is a sequence of ASCII characters.
