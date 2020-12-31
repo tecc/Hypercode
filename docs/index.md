@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Hypercode Programming Language
+title: Hypercode
 nav_order: 1
-has_children: false
+has_children: true
 ---
 # ![Hypercode](https://raw.githubusercontent.com/tecc/Hypercode/dev/resources/Logo.svg)
 [![Discord](https://img.shields.io/discord/793633545037152297.svg?label=discord&logo=discord)](https://discord.gg/q8eHw7MVUf)
@@ -15,6 +15,6 @@ Work In Progress
 
 ## License
 
-Hypercode is licensed under the **GNU Lesser General Public License version 3**, and can be found in [the license file](./LICENSE.txt).
+Hypercode is licensed under the **GNU Lesser General Public License version 3**, and can be found in [the license file](./LICENSE).
 
 Copyright (c) 2020 Technotype, MarcusSlover & 1pe. All rights reserved.
