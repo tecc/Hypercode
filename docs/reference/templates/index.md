@@ -9,20 +9,20 @@ has_children: false
 
 This document is an attempt at trying to describe the Hypercube JSON template format, or more specifically, the objects that can go into the `blocks` array inside a Hypercube template.
 
-If something is missing, please tell us and we'll document it.
+If something is missing, please tell us so that we can document it.
 
 ## Field reference
 
 | Field name | Required                                         | Description             | Type                        |
 |------------|--------------------------------------------------|-------------------------|-----------------------------|
 | `id`       | `true`                                           | The type of block.      | `"block"` or `"bracket"`    |
-| `block`    | `true` if `id` is `"block"`, `false` otherwise   | The code block type.    | [Block types](#Block types) |
+| `block`    | `true` if `id` is `"block"`, `false` otherwise   | The code block type.    | [Block types](#block-types) |
 | `args`     | `true` if `id` is `"block"`, `false` otherwise   | Arguments for the block | Array of arguments          |
-| `action`   | See [Block types](#Block types)                  | The blocks action.      | String, see block type.     |
+| `action`   | See [Block types](#block-types)                  | The blocks action.      | String, see block type.     |
 | `type`     | `true` if `id` is `"bracket"`, `false` otherwise | The bracket type.       | `"norm"` or `"repeat"`      |
 | `direct`   | `true` if `id` is `"bracket"`, `false` otherwise | The bracket direction.  | `"open"` or `"close"`       |
-| `target`   | See [Block types](#Block types)                  | The Target              | [Targets](#Targets)         |
-| `inverted` | See [Block types](#Block types)                  | NOT                     | "NOT" if null not there     |
+| `target`   | See [Block types](#block-types)                  | The Target              | [Targets](#targets)         |
+| `inverted` | See [Block types](#block-types)                  | NOT                     | "NOT" if null not there     |
 
 ### Block types
 
@@ -46,22 +46,21 @@ If something is missing, please tell us and we'll document it.
 | Repeat        | `repeat`        | `true`            | `false`           | `false`    |
 | Call Function | `call_func`     | `false`           | `false`           | `false`    |
 | Start Process | `start_process` | `false`           | `false`           | `false`    |
-## Arguments
 
 ## Variable types
 
 | Variable name     | Identifier | Description                              |
 |-------------------|------------|------------------------------------------|
-| Text              | `txt`      | [Text](#Text)                            |
-| Number            | `num`      | [Numbers](#Numbers)                      |
-| Location          | `loc`      | [Locations](#Locations)                  |
-| Sound             | `snd`      | [Sounds](#Sounds)                        |
-| Relative location | `r_loc`    | [Relative Location](#Relative locations) |
-| Vector            | `vec`      | [Vectors](#Vectors)                      |
-| Particle          | `part`     | [Particle](#Particles)                   |
-| Potion effect     | `pot`      | [Potion Effect](#Potions)                |
-| Dynamic variable  | `var`      | [Variables](#Variables)                  |
-| Game value        | `g_val`    | [Game Values](#Game values)              |
+| Text              | `txt`      | [Text](#text)                            |
+| Number            | `num`      | [Numbers](#numbers)                      |
+| Location          | `loc`      | [Locations](#locations)                  |
+| Sound             | `snd`      | [Sounds](#sounds)                        |
+| Relative location | `r_loc`    | [Relative Location](#relative-locations) |
+| Vector            | `vec`      | [Vectors](#vectors)                      |
+| Particle          | `part`     | [Particle](#particles)                   |
+| Potion effect     | `pot`      | [Potion Effect](#potions)                |
+| Dynamic variable  | `var`      | [Variables](#variables)                  |
+| Game value        | `g_val`    | [Game Values](#game-values)              |
 
 ### Text
 
@@ -82,7 +81,7 @@ All numbers are stored as 64-bit signed integers.
 
 | Data      | Description           | Type                                |
 |-----------|-----------------------|-------------------------------------|
-| `loc`     | The location value.   | [Location object](#Location object) |
+| `loc`     | The location value.   | [Location object](#location-object) |
 | `isBlock` | Not in use.           | Boolean                             |
 
 #### Location object
@@ -99,7 +98,7 @@ All numbers are stored as 64-bit signed integers.
 
 | Data       | Description                             | Type                            |
 |------------|-----------------------------------------|---------------------------------|
-| `sound`    | The ID of the sound to be played        | See [Sound types](#Sound types) |
+| `sound`    | The ID of the sound to be played        | See below                       |
 | `pitch`    | The pitch of the sound (Default: 1.0)   | Double                          |
 | `vol`      | The volume of the sound  (Default: 2.0) | Double                          |
 
@@ -912,10 +911,10 @@ DiamondFire sound IDs are custom, and then when played mapped to their correspon
 
 ### Particles
 
-| Data       | Description                                    | Type                            |
-|------------|------------------------------------------------|---------------------------------|
-| `particle` | The Id of the particle                         | Particle type, see below        |
-| `cluster`  | More Data for how the particle should function | [Cluster Object](#ClusterObject)|
+| Data       | Description                                    | Type                              |
+|------------|------------------------------------------------|-----------------------------------|
+| `particle` | The Id of the particle                         | Particle type, see below          |
+| `cluster`  | More Data for how the particle should function | [Cluster Object](#cluster-object) |
 
 *Particles have Two "data" areas*
 
@@ -928,6 +927,7 @@ DiamondFire sound IDs are custom, and then when played mapped to their correspon
 
 <details>
 <summary>Particle types</summary>
+
 | Name                    | Minecraft ID            |
 |-------------------------|-------------------------|
 | `Smoke`                 | `smoke`                 |
@@ -975,10 +975,10 @@ DiamondFire sound IDs are custom, and then when played mapped to their correspon
 | `Column Bubble`         | `bubble_column_up`      |
 | `Campfire Smoke`        | `campfire_cosy_smoke`   |
 | `Campfire Signal Smoke` | `campfire_signal_smoke` |
+
 </details>
 
-
-#### ClusterObject
+#### Cluster object
 
 | Field name   | Description               | Type     |
 |--------------|---------------------------|----------|
@@ -995,19 +995,19 @@ DiamondFire sound IDs are custom, and then when played mapped to their correspon
 | `amp`    | The Amplifier of the effect                       | Integer                        |
 ### Variables
 
-| Data     | Description                                  | Type                               |
-|----------|----------------------------------------------|------------------------------------|
-| `name`   | The Name of the variable                     | String                             |
-| `scope`  | The Scope of the variable                    | [Variable Scopes](#VariableScopes) |
+| Data     | Description                                  | Type                                |
+|----------|----------------------------------------------|-------------------------------------|
+| `name`   | The Name of the variable                     | String                              |
+| `scope`  | The Scope of the variable                    | [Variable Scopes](#variable-scopes) |
 
-#### VariableScopes
+#### Variable scopes
 
 Hypercube has 3 Variable Scopes These are
 - Unsaved `unsaved` *Known as GAME*
 - Saved `saved`
 - Local `local`
 
-### GameValues
+### Game values
 
 | Data        | Description                                   | Type                            |
 |-------------|-----------------------------------------------|---------------------------------|
