@@ -9,10 +9,12 @@ import static me.tecc.hypercode.language.lexing.Token.Type;
  */
 public class Lexer {
     List<Token> tokens;
+    List<TokenError> errors;
     Token current;
 
     public void init() {
         tokens = new ArrayList<>();
+        errors = new ArrayList<>();
         current = new Token();
     }
 
@@ -28,6 +30,7 @@ public class Lexer {
                 if (current.content.charAt(0) == c) {
                     // this works because the function never directly accesses the current index
                     if (!isEscaped(current.content.length())) {
+                        // removes the first index
                         current.content = current.content.substring(1);
                         put();
                         continue;
@@ -36,6 +39,7 @@ public class Lexer {
                 current.content += c;
                 continue;
             }
+            // if begin string
             if (c == '"' || c == '\'') {
                 put();
                 current.type = Type.STRING;
@@ -43,28 +47,53 @@ public class Lexer {
 
                 continue;
             }
-            if (c == ' ') {
+            // now we get on to operators
+            // very simple, it's 2 steps;
+            // 1. check if character is in operator alphabet; if so, set the current type to operator
+            // 2. when space reached, check which operator it is.
+            if (Operator.ALPHABET.contains("" + c)) {
+                this.current.type = Type.OPERATOR;
+                continue;
+            }
+            // checks if in operator
+            // the whitespace thing is in var because i don't wanna repeat the condition
+            boolean isWhitespace = c == ' ' || c == '\n';
+            if (this.current.type == Type.OPERATOR && !Operator.ALPHABET.contains("" + c)) {
+                // report error if invalid operator
+                if (!Operator.isOperator(this.current.content)) {
+                    error("Invalid operator " + this.current.content);
+                }
+                put();
+                // append new character to current token if character isn't whitespace
+                if (!isWhitespace) {
+                    this.current.content += c;
+                }
+                continue;
+            }
+
+            // normal if whitespace
+            if (isWhitespace) {
                 if (isKeyword(current.content)) {
                     this.current.type = Type.KEYWORD;
                 }
                 put();
             }
-
         }
         put();
         return tokens;
     }
 
+    private void error(String message) {
+        this.errors.add(new TokenError(this.current, message));
+    }
+
     private boolean isKeyword(String s) {
-        switch (s) {
-            case "on":
-            case "var":
-            case "true":
-            case "false":
+        for (Keyword keyword : Keyword.values()) {
+            if (keyword.is(s))
                 return true;
-            default:
-                return false;
         }
+
+        return false;
     }
 
     private boolean isEscaped(int index) {
