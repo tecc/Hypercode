@@ -60,7 +60,6 @@ public class Lexer {
         }
 
         if (NUMBERS.contains("" + c)) {
-            System.out.println("number");
             put();
             this.current.type = Type.NUMBER;
             this.current.content += c;
