@@ -11,11 +11,11 @@ We chose the LGPLv3 because it provides freedom of use, but requires forks to be
 
 ## Copyright
 
-Copyright (c) Aaron Lundin, 2020. All rights reserved.
+Copyright (c) Aaron Lundin, 2020-2021. All rights reserved.
 
-Copyright (c) MarcusSlover, 2020. All rights reserved.
+Copyright (c) MarcusSlover, 2020-2021. All rights reserved.
 
-Copyright (c) 1pe, 2020. All rights reserved.
+Copyright (c) 1pe, 2020-2021. All rights reserved.
 
 ## GNU Lesser General Public License version 3
 ```text 

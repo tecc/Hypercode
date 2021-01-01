@@ -11,4 +11,4 @@ Work In Progress
 
 Hypercode is licensed under the **GNU Lesser General Public License version 3**, and can be found in [the license file](./LICENSE.txt).
 
-Copyright (c) 2020 Technotype, MarcusSlover & 1pe. All rights reserved.
+Copyright (c) 2020-2021 Technotype, MarcusSlover & 1pe. All rights reserved.
