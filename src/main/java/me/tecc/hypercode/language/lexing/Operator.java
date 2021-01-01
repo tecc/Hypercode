@@ -5,6 +5,7 @@ public enum Operator {
     PARAM_LIST_BEGIN("("), PARAM_LIST_END(")"),
     BLOCK_BEGIN("{"), BLOCK_END("}"),
     LIST_BEGIN("["), LIST_END("]"),
+    LIST_SEPARATOR(","),
     // comparing operators
     EQUAL("=="), NOT_EQUAL("!="),
     GREATER_THAN(">"), GREATER_THAN_OR_EQUAL(">="),
