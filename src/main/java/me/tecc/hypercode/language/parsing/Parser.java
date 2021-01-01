@@ -5,18 +5,23 @@ import me.tecc.hypercode.language.lexing.*;
 import java.util.List;
 
 public class Parser {
-
+    List<ASTNode> nodes;
+    ASTNode current;
+    List<ParsingError> errors;
 
     public AbstractSyntaxTree parse(List<Token> tokens) {
+        // expectations
+        // for error catching, prediction and in general faster compilation
+        boolean expectParameterList = false;
+        boolean expectDeclaration = false;
         for (Token token : tokens) {
-            if (token.type == Token.Type.KEYWORD) {
-                switch (token.content) {
-                    case "function":
-                        break;
-                }
-            }
+
         }
 
         return null;
+    }
+
+    private void error(String message) {
+        errors.add(new ParsingError(this.current, message));
     }
 }

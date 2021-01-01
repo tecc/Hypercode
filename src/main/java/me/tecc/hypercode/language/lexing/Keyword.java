@@ -9,11 +9,24 @@ public enum Keyword {
     IF("if"), ELSE("else"),
     VAR("var"),
     PROCESS("process"), FUNCTION("function"),
-    MACRO("macro");
+    MACRO("macro"),
+    NATIVE("native");
 
     String word;
     Keyword(String word) {
         this.word = word.toLowerCase();
+    }
+
+    public static Keyword getKeyword(String word) {
+        for (Keyword keyword : Keyword.values()) {
+            if (keyword.is(word))
+                return keyword;
+        }
+        return null;
+    }
+
+    public static boolean isKeyword(String word) {
+        return getKeyword(word) != null;
     }
 
     /**

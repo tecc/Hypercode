@@ -18,19 +18,23 @@ public enum Operator {
     // this is why i didn't name ADD_EQUALS and SUBTRACT_EQUALS INCREMENT and DECREMENT respectively
     // consistency: A+
     MULTIPLY_EQUALS("*="), DIVIDE_EQUALS("/="),
-    PROPERTY_ACCESS(".");
+    // accessor operators
+    SET("="), UNSET("~"),
+    PROPERTY_ACCESS(".")
     ;
 
-    public static final String ALPHABET = "(){}[]=!><+-*/.?:";
+    public static final String ALPHABET = "(){}[]=!><+-*/.?:~";
+    private static int count = 0;
     String sequence;
     Operator(String seq) {
         for (char c : seq.toCharArray()) {
             if (!ALPHABET.contains("" + c))
                 throw new RuntimeException("Invalid operator sequence! Using unreserved character " + c + ".");
         }
-        if (isOperator(seq))
-            // has to be runtime because otherwise it isn't compilable
-            throw new RuntimeException("Invalid operator sequence! Operator already exists.");
+        // if (isOperator(seq))
+        //     // has to be runtime because otherwise it isn't compilable
+        //     throw new RuntimeException("Invalid operator sequence! Operator already exists.");
+
         this.sequence = seq;
     }
 

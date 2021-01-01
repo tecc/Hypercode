@@ -4,7 +4,7 @@ import com.google.gson.JsonObject;
 
 public class Var {
     private String id;
-    private JsonObject data;
+    protected JsonObject data;
     private JsonObject data2;
 
     public JsonObject buildVar(String id, JsonObject data) {

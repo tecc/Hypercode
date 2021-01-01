@@ -23,6 +23,12 @@ public class Token {
         UNKNOWN,
         KEYWORD,
         STRING,
-        OPERATOR
+        OPERATOR,
+        IDENTIFIER,
+        NUMBER;
+    }
+
+    public String toString() {
+        return "[" + type.name() + ": '" + content + "']";
     }
 }
