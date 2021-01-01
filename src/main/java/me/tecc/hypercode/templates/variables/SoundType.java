@@ -6,7 +6,11 @@ public enum SoundType {
     WITHERDEATH("Wither Death","entity.wither.death"),
     WITHERHURT("Wither Hurt","entity.wither.hurt"),
     WITHERSHOOT("Wither Shoot","entity.wither.shoot"),
-    WITHERSPAWN("Wither Spawn","entity.wither.spawn");
+    WITHERSPAWN("Wither Spawn","entity.wither.spawn"),
+    WITHERSKELETONAMBIENT("Wither Skeleton Ambient","entity.wither_skeleton.ambient"),
+    WITHERSKELETONDEATH("Wither Skeleton Death","entity.wither_skeleton.death"),
+    WITHERSKELETONHURT("Wither Skeleton Hurt","entity.wither_skeleton.hurt"),
+    WITHERSKELETONSTEP("Wither Skeleton Step","entity.wither_skeleton.step");
 
     //TODO: ADD ALL SOUNDS PLS/THNX
 
