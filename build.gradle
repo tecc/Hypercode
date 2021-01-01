@@ -7,7 +7,11 @@ group 'me.tecc'
 version '0.1.0-alpha'
 
 repositories {
-    mavenCentral()
+    jcenter()
+    maven {
+        name = 'Sonatype OSS Releases'
+        url  = 'https://repo1.maven.org/maven2/'
+    }
 }
 
 dependencies {
@@ -15,6 +19,7 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 
     implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'net.md-5:bungeecord-chat:1.16-R0.3'
 
     // Apache Commons
     implementation 'commons-cli:commons-cli:1.4'
