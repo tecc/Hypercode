@@ -15,6 +15,7 @@ public class CodeBlock implements IJsonModel<CodeBlock> {
     BlockType blockType = null;
     BlockAction blockAction = null;
     BlockTarget blockTarget = null;
+
     boolean isPiston;
     boolean isInverted;
 
@@ -36,7 +37,9 @@ public class CodeBlock implements IJsonModel<CodeBlock> {
 
     @Override
     public JsonObject toJson(CodeBlock value) {
-        return null;
+        JsonObject json = new JsonObject();
+
+        return json;
     }
 
     public static CodeBlock fromJson(JsonObject jsonObject) {
