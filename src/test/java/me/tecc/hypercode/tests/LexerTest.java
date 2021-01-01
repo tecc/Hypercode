@@ -42,7 +42,10 @@ public class LexerTest {
 
         lexer.init();
         lexer.lex("function doALot(param1, param2) { doSomething(param1); doSomethingElse(param2) }");
-
+        // DONTFIXME: @tecc: Functions can't have params in DF iirc ~1pe
+        // they can't, but i'm clever
+        // i know how to make it work
+        // - tecc
     }
 
 }
