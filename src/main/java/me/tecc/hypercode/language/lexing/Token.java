@@ -1,10 +1,14 @@
 package me.tecc.hypercode.language.lexing;
 
+import me.tecc.hypercode.templates.variables.Text;
+import me.tecc.hypercode.utils.TextPosition;
+
 import java.util.Objects;
 
 public class Token {
     public Type type = Type.UNKNOWN;
     public String content = "";
+    public TextPosition position;
 
     @Override
     public boolean equals(Object o) {

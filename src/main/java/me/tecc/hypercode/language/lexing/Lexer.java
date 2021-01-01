@@ -1,5 +1,8 @@
 package me.tecc.hypercode.language.lexing;
 
+import me.tecc.hypercode.utils.TextPosition;
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,10 +19,16 @@ public class Lexer {
     List<LexingError> errors;
     Token current;
 
+    String code;
+    int index;
+
     public void init() {
         tokens = new ArrayList<>();
         errors = new ArrayList<>();
         current = new Token();
+        code = "";
+        index = -1;
+        expectIdentifier = false;
     }
 
     /**
@@ -28,19 +37,21 @@ public class Lexer {
      * @param code the string to lex
      */
     public List<Token> lex(String code) {
+        char[] chars = code.toCharArray();
         char prev = ' ';
-        for (char curr : code.toCharArray()) {
+        for (int i = 0; i < chars.length; i++) {
+            index = i;
+            char curr = chars[i];
             iterateLexing(prev, curr);
             prev = curr;
         }
         // remember to add recommendation of new line as last line
         if (!code.endsWith("\n")) iterateLexing(prev, '\n');
-        put();
+        pushToken();
         tokens = tokens.stream()
-                .map(token -> {
+                .peek(token -> {
                     if (token.type == Type.UNKNOWN)
                         token.type = Type.IDENTIFIER;
-                    return token;
                 }).collect(Collectors.toList());
         return tokens;
     }
@@ -49,7 +60,6 @@ public class Lexer {
 
     private void iterateLexing(char prevChar, char currChar) {
         // the whitespace thing is in var because i don't wanna repeat the condition
-        boolean isWhitespace = currChar == ' ' || currChar == '\n';
         // if in a string, append char to string
         if (current.type == Type.STRING) {
             if (current.content.charAt(0) == currChar) {
@@ -57,7 +67,7 @@ public class Lexer {
                 if (!isEscaped(current.content.length())) {
                     // removes the first index
                     current.content = current.content.substring(1);
-                    put();
+                    pushToken();
                     return;
                 }
             }
@@ -66,7 +76,7 @@ public class Lexer {
         }
         // if begin string
         if (currChar == '"' || currChar == '\'') {
-            put();
+            pushToken();
             current.type = Type.STRING;
             current.content += currChar;
 
@@ -75,12 +85,12 @@ public class Lexer {
 
         number_check:
         if (NUMBERS.contains("" + currChar)) {
-            if (!isWhitespace && !(NUMBERS + NUMBER_DECIMAL_SEPARATOR).contains("" + prevChar)) {
+            if (!isWhitespace(prevChar) && !(NUMBERS + NUMBER_DECIMAL_SEPARATOR).contains("" + prevChar)) {
                 if (!Operator.ALPHABET.contains("" + prevChar))
                     break number_check;
             }
             if (this.current.type != Type.NUMBER) {
-                put();
+                pushToken();
                 this.current.type = Type.NUMBER;
             }
             this.current.content += currChar;
@@ -96,14 +106,14 @@ public class Lexer {
             this.current.content += currChar;
             return;
         }
-
+        
         // now we get on to operators
         // very simple, it's 2 steps;
         // 1. check if character is in operator alphabet; if so, set the current type to operator
         // 2. when space reached, check which operator it is.
         if (Operator.ALPHABET.contains("" + currChar)) {
             if (this.current.type != Type.OPERATOR) {
-                put();
+                pushToken();
                 this.current.type = Type.OPERATOR;
             }
             this.current.content += currChar;
@@ -116,24 +126,25 @@ public class Lexer {
             if (!Operator.isOperator(this.current.content)) {
                 error("Invalid operator " + this.current.content);
             }
-            put();
+            pushToken();
             // append new character to current token if character isn't whitespace
-            if (!isWhitespace) {
+            if (!isWhitespace(currChar)) {
                 this.current.content += currChar;
             }
             return;
         }
 
+
         // normal if whitespace
-        if (isWhitespace) {
-            if (current.type == Type.NUMBER) {
-                put();
-                return;
+        if (isWhitespace(currChar)) {
+            if (this.current.content.isEmpty()) return;
+
+            if (expectIdentifier) {
+                if (this.current.type == Type.UNKNOWN) this.current.type = Type.IDENTIFIER;
+                // else error("Expected identifier, got " + this.current.type.name());
             }
+
             if (Keyword.isKeyword(this.current.content)) {
-                if (expectIdentifier) {
-                    error("Expected identifier, got keyword.");
-                }
                 this.current.type = Type.KEYWORD;
                 //noinspection ConstantConditions
                 switch (Keyword.getKeyword(this.current.content)) {
@@ -141,17 +152,21 @@ public class Lexer {
                     case VAR:
                     case FUNCTION:
                     case MACRO:
+                        pushToken();
                         expectIdentifier = true;
+                        return;
+                    default:
+                        break;
                 }
             }
-            if (expectIdentifier) {
-                if (this.current.type == Type.UNKNOWN) this.current.type = Type.IDENTIFIER;
-                expectIdentifier = false;
-            }
-            put();
+            pushToken();
             return;
         }
         this.current.content += currChar;
+    }
+
+    private boolean isWhitespace(char c) {
+        return c == '\n' || c == ' ';
     }
 
     public List<LexingError> errors() {
@@ -159,9 +174,14 @@ public class Lexer {
     }
 
     private void error(String message) {
-        this.errors.add(new LexingError(this.current, message));
+        int point = Math.max(Math.min(index + 1, code.length() - 1), 0);
+        String area = code.substring(0, point);
+        int line = StringUtils.countMatches(area, "\n") + 1;
+        int column = index - (area.lastIndexOf("\n") + 1);
+        this.errors.add(new LexingError(this.current, message, line, column));
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private boolean isEscaped(int index) {
         if (index <= 0) return false;
         if (index - 1 == 0) return current.content.charAt(0) == '\\';
@@ -171,12 +191,19 @@ public class Lexer {
         else return false;
     }
 
-    private void put() {
+    private void pushToken() {
         if (current == null) {
             current = new Token();
         }
         if (current.equals(new Token())) {
             return;
+        }
+        if (expectIdentifier) {
+            if (current.type != Type.UNKNOWN && current.type != Type.IDENTIFIER) {
+                error("Expected identifier, got " + current.type.name());
+            }
+            if (current.type == Type.UNKNOWN) current.type = Type.IDENTIFIER;
+            expectIdentifier = false;
         }
         tokens.add(current);
         current = new Token();

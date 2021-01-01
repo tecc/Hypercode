@@ -17,25 +17,35 @@ public class LexerTest {
 
     @Test
     public void lexerTest () {
+        // few whitespace tests
         lex("var pi=3.14159265389", 4);
+        lex("var pi = 3.141592658389", 4);
+        // bombard it with a bunch of stuff
         lex("function doALot(param1, param2) { doSomething(param1) doSomethingElse(param2) }", 17);
+        lex("macro randomMacro=doALot(randomMacro, pi)", 9);
+        lex("macro 1 = \"1\"", 4, 1); // if this was possible it would be pure evil
     }
 
-
     private void lex(String code, int expectedTokens) {
-        System.out.println("Lexing code: " + code);
+        lex(code, expectedTokens, 0);
+    }
+
+    private void lex(String code, int expectedTokens, int expectedErrors) {
+        log.info(() -> "Lexing code: " + code);
         lexer.init();
         List<Token> tokens = lexer.lex(code);
         log.info(() -> "Logging tokens...");
+        StringBuilder b = new StringBuilder();
         for (Token t : tokens) {
-            log.info(t::toString);
+            b.append(t);
         }
+        log.info(b::toString);
         log.info(() -> "Logging errors (if any)...");
         for (LexingError error : lexer.errors()) {
             log.error(error::toString);
         }
-        Assertions.assertEquals(0, lexer.errors().size(), "Errors were encountered during lexing");
-        Assertions.assertEquals(expectedTokens, tokens.size(), "Expected 4 tokens");
+        Assertions.assertEquals(expectedErrors, lexer.errors().size(), "Expected " + expectedErrors + " errors");
+        Assertions.assertEquals(expectedTokens, tokens.size(), "Expected " + expectedTokens + " errors");
 
     }
 }
