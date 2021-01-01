@@ -33,6 +33,6 @@ public class Token {
     }
 
     public String toString() {
-        return "[" + type.name() + ": '" + content + "']";
+        return "[" + position + " " + type.name() + ": '" + content + "']";
     }
 }

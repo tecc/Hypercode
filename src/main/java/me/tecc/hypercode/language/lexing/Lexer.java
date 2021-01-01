@@ -26,6 +26,7 @@ public class Lexer {
         tokens = new ArrayList<>();
         errors = new ArrayList<>();
         current = new Token();
+        current.position = new TextPosition(0, 0);
         code = "";
         index = -1;
         expectIdentifier = false;
@@ -45,6 +46,7 @@ public class Lexer {
             iterateLexing(prev, curr);
             prev = curr;
         }
+        if (current.type == Type.STRING) error("String not closed");
         // remember to add recommendation of new line as last line
         if (!code.endsWith("\n")) iterateLexing(prev, '\n');
         pushToken();
@@ -174,11 +176,16 @@ public class Lexer {
     }
 
     private void error(String message) {
-        int point = Math.max(Math.min(index + 1, code.length() - 1), 0);
+        TextPosition pos = getPos(index);
+        this.errors.add(new LexingError(this.current, message, pos.line, pos.column));
+    }
+
+    private TextPosition getPos(int pos) {
+        int point = Math.max(Math.min(pos + 1, code.length() - 1), 0);
         String area = code.substring(0, point);
         int line = StringUtils.countMatches(area, "\n") + 1;
         int column = index - (area.lastIndexOf("\n") + 1);
-        this.errors.add(new LexingError(this.current, message, line, column));
+        return new TextPosition(line, column);
     }
 
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
@@ -207,5 +214,6 @@ public class Lexer {
         }
         tokens.add(current);
         current = new Token();
+        current.position = getPos(index + 1);
     }
 }

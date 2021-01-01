@@ -14,12 +14,14 @@ public class Parser {
         // for error catching, prediction and in general faster compilation
         boolean expectParameterList = false;
         boolean expectDeclaration = false;
+
         for (Token token : tokens) {
 
         }
 
         return null;
     }
+
 
     private void error(String message) {
         errors.add(new ParsingError(this.current, message));
