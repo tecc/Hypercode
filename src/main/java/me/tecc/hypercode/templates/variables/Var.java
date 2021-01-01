@@ -15,6 +15,7 @@ public class Var {
         return variable;
     }
 
+
     public JsonObject buildVar(String id, JsonObject data, JsonObject data2) {
         JsonObject variable = new JsonObject();
         variable.addProperty("id", id);
