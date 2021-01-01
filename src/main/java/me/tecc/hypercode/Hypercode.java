@@ -25,7 +25,7 @@ public class Hypercode {
     public static void main(String[] args) throws ParseException, IOException {
         meta = HypercodeMeta.load();
         System.out.printf("Hypercode CLI - Version %s for patch %s\n", meta.version(), meta.hypercubeVersion());
-        System.out.println("Copyright (c) 2020-2021 Technotype, MarcusSlover & 1pe. All rights reserved.");
+        System.out.println("Copyright (c) 2020-2021 Technotype, MarcusSlover & Hammer86gn. All rights reserved.");
         if (args.length < 1) {
             System.out.println("No command provided, resorting to help.");
             args = new String[]{"help"};

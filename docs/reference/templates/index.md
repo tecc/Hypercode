@@ -5,7 +5,7 @@ parent: Reference
 has_children: false
 ---
 # Hypercube Template Format
-> By 1pe and Technotype
+> By Hammer86gn and Technotype
 
 This document is an attempt at trying to describe the Hypercube JSON template format, or more specifically, the objects that can go into the `blocks` array inside a Hypercube template.
 

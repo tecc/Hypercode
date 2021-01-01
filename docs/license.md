@@ -15,7 +15,7 @@ Copyright (c) Aaron Lundin, 2020-2021. All rights reserved.
 
 Copyright (c) MarcusSlover, 2020-2021. All rights reserved.
 
-Copyright (c) 1pe, 2020-2021. All rights reserved.
+Copyright (c) Hammer86gn, 2020-2021. All rights reserved.
 
 ## GNU Lesser General Public License version 3
 ```text 
