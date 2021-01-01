@@ -21,11 +21,11 @@ public class Number extends Var {
         // This is the quality code ZONE
     }
 
-    public JsonObject getRawTextData(Number number) {
+    public static JsonObject getRawNumberData(Number number) {
         return number.data;
     }
 
-    public JsonObject getRawTextObject(Number number) {
+    public static JsonObject getRawNumberObject(Number number) {
         return number.object;
     }
 
