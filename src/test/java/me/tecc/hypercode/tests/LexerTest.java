@@ -13,39 +13,29 @@ import java.util.List;
 
 public class LexerTest {
     Logger log = LoggerFactory.getLogger(this.getClass());
+    Lexer lexer = new Lexer();
 
     @Test
     public void lexerTest () {
-        Lexer lexer = new Lexer();
-
-        lexer.init();
-        List<Token> tokens = lexer.lex("on event");
-        for (Token t : tokens) {
-            log.info(t::toString);
-        }
-        for (LexingError error : lexer.errors()) {
-            log.error(error::toString);
-        }
-        Assertions.assertEquals(0, lexer.errors().size(), "Errors were encountered during lexing");
-        Assertions.assertEquals(2, tokens.size(), "Expected 2 tokens");
-
-        lexer.init();
-        tokens = lexer.lex("var a = 2");
-        for (Token t : tokens) {
-            log.info(t::toString);
-        }
-        for (LexingError error : lexer.errors()) {
-            log.error(error::toString);
-        }
-        Assertions.assertEquals(0, lexer.errors().size(), "Errors were encountered during lexing");
-        Assertions.assertEquals(4, tokens.size(), "Expected 4 tokens");
-
-        lexer.init();
-        lexer.lex("function doALot(param1, param2) { doSomething(param1); doSomethingElse(param2) }");
-        // DONTFIXME: @tecc: Functions can't have params in DF iirc ~1pe
-        // they can't, but i'm clever
-        // i know how to make it work
-        // - tecc
+        lex("var pi=3.14159265389", 4);
+        lex("function doALot(param1, param2) { doSomething(param1) doSomethingElse(param2) }", 17);
     }
 
+
+    private void lex(String code, int expectedTokens) {
+        System.out.println("Lexing code: " + code);
+        lexer.init();
+        List<Token> tokens = lexer.lex(code);
+        log.info(() -> "Logging tokens...");
+        for (Token t : tokens) {
+            log.info(t::toString);
+        }
+        log.info(() -> "Logging errors (if any)...");
+        for (LexingError error : lexer.errors()) {
+            log.error(error::toString);
+        }
+        Assertions.assertEquals(0, lexer.errors().size(), "Errors were encountered during lexing");
+        Assertions.assertEquals(expectedTokens, tokens.size(), "Expected 4 tokens");
+
+    }
 }

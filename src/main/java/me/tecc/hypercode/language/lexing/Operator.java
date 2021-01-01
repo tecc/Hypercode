@@ -24,7 +24,7 @@ public enum Operator {
     PROPERTY_ACCESS(".")
     ;
 
-    public static final String ALPHABET = "(){}[]=!><+-*/.?:~";
+    public static final String ALPHABET = "(){}[]=!><+-*/.?:~,";
     private static int count = 0;
     String sequence;
     Operator(String seq) {
