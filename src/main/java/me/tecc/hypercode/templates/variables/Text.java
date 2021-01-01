@@ -16,11 +16,11 @@ public class Text extends Var {
         object = this.buildVar("txt", data);
     }
 
-    public JsonObject getRawTextData(Text text) {
+    public static JsonObject getRawTextData(Text text) {
         return text.data;
     }
 
-    public JsonObject getRawTextObject(Text text) {
+    public static JsonObject getRawTextObject(Text text) {
         return text.object;
     }
 
