@@ -4,7 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 /**
- * Provides a decent way of reading JSON objects.
+ * Provides a safer way of reading JSON objects.
  */
 public class JsonReader {
     JsonObject json;
