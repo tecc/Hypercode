@@ -22,7 +22,7 @@ public class TemplateCoder {
      * @param template The template to encode.
      * @return The encoded template as a string.
      */
-    public static String encode(Template template) {
+    public static String encode(JsonObject template) {
         try {
             // writes gzipped template to a byte array output stream
             ByteArrayOutputStream byteOut = new ByteArrayOutputStream();

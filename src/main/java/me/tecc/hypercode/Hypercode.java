@@ -4,6 +4,8 @@ import com.google.gson.JsonObject;
 import me.tecc.hypercode.cli.CLICommand;
 import me.tecc.hypercode.cli.CompileCommand;
 import me.tecc.hypercode.cli.HelpCommand;
+import me.tecc.hypercode.cli.TemplateCommand;
+import me.tecc.hypercode.templates.Template;
 import me.tecc.hypercode.templates.TemplateCoder;
 import org.apache.commons.cli.ParseException;
 
@@ -17,7 +19,8 @@ import java.util.stream.Collectors;
 public class Hypercode {
     public static final List<CLICommand> commands = Arrays.asList(
             new HelpCommand(),
-            new CompileCommand()
+            new CompileCommand(),
+            new TemplateCommand()
     );
 
     public static HypercodeMeta meta;

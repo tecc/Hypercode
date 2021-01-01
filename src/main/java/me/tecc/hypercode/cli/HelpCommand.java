@@ -5,6 +5,9 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class HelpCommand extends CLICommand {
     private static CommandUsage getUsage() {
         CommandUsage usage = new CommandUsage();
@@ -28,16 +31,11 @@ public class HelpCommand extends CLICommand {
         if (cmd.getArgs().length > 0) {
             String commandName = cmd.getArgs()[0];
             CLICommand command = Hypercode.getCommand(commandName);
-            HelpFormatter h = new HelpFormatter();
-            h.printHelp("hypercode " + commandName + " " + command.usage.getUsageString(), options);
-            if (command.usage.argumentCount() > 0) {
-                System.out.println("Arguments:");
-                System.out.println(command.usage.getArgumentDescription(4));
-            }
+            command.printUsage();
             return;
         }
 
-        System.out.println("Usage: hypercode <command> [arguments...]");
+        System.out.println("usage: hypercode <command> [arguments...]");
         System.out.println("Commands:");
         for (CLICommand command : Hypercode.commands) {
             System.out.printf("    %s: %s\n", StringUtils.join(command.names, " | "), command.description);
