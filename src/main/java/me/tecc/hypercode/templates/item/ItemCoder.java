@@ -189,4 +189,12 @@ public class ItemCoder {
 
         return item;
     }
+
+    public static CompoundTag encode(Item item) {
+        CompoundTag tag = new CompoundTag();
+
+
+
+        return tag;
+    }
 }
