@@ -69,4 +69,8 @@ public class Location extends Var{
     public double getZ() {
         return z;
     }
+
+    public static Vector toVector(Location location) {
+        return new Vector(location.getX(), location.getY(), location.getZ());
+    }
 }
