@@ -17,12 +17,16 @@ public class JsonReader {
         return containsKey(key) ? json.get(key).getAsString() : defaultValue;
     }
 
-    public int readInteger(String key, int defaultValue) {
-        return containsKey(key) ? json.get(key).getAsInt() : defaultValue;
+    public long readNumber(String key, long defaultValue) {
+        return containsKey(key) ? json.get(key).getAsLong() : defaultValue;
     }
 
     public JsonArray readArray(String key, JsonArray defaultValue) {
         return containsKey(key) ? json.get(key).getAsJsonArray() : defaultValue;
+    }
+
+    public JsonObject readObject(String key, JsonObject defaultValue) {
+        return containsKey(key) ? json.get(key).getAsJsonObject() : defaultValue;
     }
 
     public boolean containsKey(String key) {

@@ -12,6 +12,7 @@ repositories {
         name = 'Sonatype OSS Releases'
         url  = 'https://repo1.maven.org/maven2/'
     }
+    maven { url 'https://jitpack.io/' }
 }
 
 dependencies {
@@ -20,6 +21,7 @@ dependencies {
 
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'net.md-5:bungeecord-chat:1.16-R0.3'
+    implementation 'com.github.Querz:NBT:5.2'
 
     // Apache Commons
     implementation 'commons-cli:commons-cli:1.4'

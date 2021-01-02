@@ -1,4 +1,4 @@
-package me.tecc.hypercode.templates.item;
+package me.tecc.hypercode.templates.item.meta;
 
 import java.util.Map;
 
