@@ -312,6 +312,10 @@ public class ItemCoder {
                 item.entityTag = minecraftTag.getCompoundTag("EntityTag");
             }
 
+            // Bucket of Fish
+            if (minecraftTag.containsKey("BucketVariantTag")) {
+                item.bucketVariantTag = minecraftTag.getInt("BucketVariantTag");
+            }
             //TODO rest of item NBTs
 
         }

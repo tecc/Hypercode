@@ -14,9 +14,12 @@ import java.util.List;
 public class Item implements IItem {
     NamedTag namedTag;
 
+    // Generic data
     String minecraftId;
     byte minecraftCount;
     CompoundTag minecraftTag; // Deep NBT data.
+
+    // Display & structure
     int hexColor;
     TextComponent itemName;
     List<TextComponent> itemLore;
@@ -26,31 +29,41 @@ public class Item implements IItem {
     List<String> itemCanDestroy;
     int itemCustomModelData;
 
+    // Enchantments & CanPlaceOn
     List<String> itemCanPlaceOn;
     List<Enchantment> enchantments;
     List<Enchantment> storedEnchantments;
     int repairCost;
 
+    // Potions
     List<AttributeModifier> attributeModifiers;
     List<CustomPotionEffect> customPotionEffects;
     String potion;
     int customPotionColor;
 
+    // Crossbow
     List<CompoundTag> chargedProjectiles;
     byte charged;
 
+    // Written books
     byte resolved;
     int generation;
     String author;
     String title;
     List<TextComponent> pages;
 
+    // Player skull
     SkullMeta skullMeta;
 
+    // Fireworks
     FireworkExplosion fireworkExplosion;
     Firework fireworks;
 
+    // Entity
     CompoundTag entityTag;
+
+    // Fish
+    int bucketVariantTag;
 
     public Item() {
         this.namedTag = null;
@@ -85,6 +98,7 @@ public class Item implements IItem {
         this.fireworkExplosion = null;
         this.fireworks = null;
         this.entityTag = null;
+        this.bucketVariantTag = 0;
     }
 
 }
