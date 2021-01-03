@@ -14,7 +14,6 @@ import java.util.List;
  * Wrapper for Items from the DiamondFire templates format.
  */
 public class Item implements IItem {
-
     NamedTag namedTag;
 
     String minecraftId;
@@ -39,6 +38,9 @@ public class Item implements IItem {
     String potion;
     int customPotionColor;
 
+    List<CompoundTag> chargedProjectiles;
+    byte charged;
+
     public Item() {
         this.namedTag = null;
 
@@ -61,6 +63,8 @@ public class Item implements IItem {
         this.customPotionEffects = new ArrayList<>();
         this.potion = null;
         this.customPotionColor = -1;
+        this.chargedProjectiles = new ArrayList<>();
+        this.charged = -1;
     }
 
 }

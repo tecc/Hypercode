@@ -184,7 +184,23 @@ public class ItemCoder {
                 item.customPotionColor = minecraftTag.getInt("CustomPotionColor");
             }
 
+            if (minecraftTag.containsKey("ChargedProjectiles")) {
+                ListTag<?> chargedProjectiles = minecraftTag.getListTag("ChargedProjectiles");
+                item.chargedProjectiles = new ArrayList<>();
+
+                @SuppressWarnings("unchecked")
+                ListTag<CompoundTag> compoundTags = (ListTag<CompoundTag>) chargedProjectiles;
+
+                for (CompoundTag tag : compoundTags) {
+                    item.chargedProjectiles.add(tag);
+                }
+            }
+
+            if (minecraftTag.containsKey("Charged")) {
+                item.charged = minecraftTag.getByte("Charged");
+            }
             //TODO rest of item NBTs
+
         }
 
         return item;
