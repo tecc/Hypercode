@@ -1,8 +1,6 @@
 package me.tecc.hypercode.templates.item;
 
-import me.tecc.hypercode.templates.item.meta.AttributeModifier;
-import me.tecc.hypercode.templates.item.meta.CustomPotionEffect;
-import me.tecc.hypercode.templates.item.meta.Enchantment;
+import me.tecc.hypercode.templates.item.meta.*;
 import me.tecc.hypercode.utils.Util;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -12,6 +10,7 @@ import net.querz.nbt.tag.ListTag;
 import net.querz.nbt.tag.StringTag;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class ItemCoder {
@@ -236,6 +235,50 @@ public class ItemCoder {
                 }
             }
 
+            // Player Heads
+            if (minecraftTag.containsKey("SkullOwner")) {
+                CompoundTag skullOwner = minecraftTag.getCompoundTag("SkullOwner");
+
+                UUID uuid = null;
+                String ownerName = null;
+                CompoundTag properties = null;
+                List<SkullTexture> skullTextureList = new ArrayList<>();
+
+                if (skullOwner.containsKey("Id")) {
+                    uuid = Util.decodeUUID(skullOwner.getIntArray("Id"));
+                }
+                if (skullOwner.containsKey("Name")) {
+                    ownerName = skullOwner.getString("Name");
+                }
+                if (skullOwner.containsKey("Properties")) {
+                    properties = skullOwner.getCompoundTag("Properties");
+                }
+
+                if (properties != null) {
+                    if (properties.containsKey("textures")) {
+                        ListTag<?> textures = minecraftTag.getListTag("textures");
+
+                        @SuppressWarnings("unchecked")
+                        ListTag<CompoundTag> compoundTags = (ListTag<CompoundTag>) textures;
+
+                        for (CompoundTag tag : compoundTags) {
+                            String signature = "";
+                            String encodedValue = "";
+
+                            if (tag.containsKey("Signature")) {
+                                signature = tag.getString("Signature");
+                            }
+                            if (tag.containsKey("Value")) {
+                                encodedValue = tag.getString("Value");
+                            }
+
+                            skullTextureList.add(new SkullTexture(signature, encodedValue));
+                        }
+                    }
+                }
+
+                item.skullMeta = new SkullMeta(uuid, ownerName, skullTextureList);
+            }
             //TODO rest of item NBTs
 
         }

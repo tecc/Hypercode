@@ -3,6 +3,7 @@ package me.tecc.hypercode.templates.item;
 import me.tecc.hypercode.templates.item.meta.AttributeModifier;
 import me.tecc.hypercode.templates.item.meta.CustomPotionEffect;
 import me.tecc.hypercode.templates.item.meta.Enchantment;
+import me.tecc.hypercode.templates.item.meta.SkullMeta;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.querz.nbt.io.NamedTag;
 import net.querz.nbt.tag.CompoundTag;
@@ -46,6 +47,8 @@ public class Item implements IItem {
     String author;
     String title;
     List<TextComponent> pages;
+
+    SkullMeta skullMeta;
 
     public Item() {
         this.namedTag = null;
