@@ -70,6 +70,9 @@ public class Item implements IItem {
     String mapScaleDirection;
     List<MapDecoration> mapDecorations;
 
+    // Stew
+    List<StewEffect> stewEffects;
+
     public Item() {
         this.namedTag = null;
 
@@ -104,6 +107,10 @@ public class Item implements IItem {
         this.fireworks = null;
         this.entityTag = null;
         this.bucketVariantTag = 0;
+        this.map = null;
+        this.mapScaleDirection = null;
+        this.mapDecorations = new ArrayList<>();
+        this.stewEffects = new ArrayList<>();
     }
 
 }

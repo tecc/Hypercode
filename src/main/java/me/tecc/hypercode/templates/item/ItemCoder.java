@@ -345,6 +345,20 @@ public class ItemCoder {
                 }
             }
 
+            // Suspicious Stew
+            if (minecraftTag.containsKey("Effects")) {
+                ListTag<?> effects = minecraftTag.getListTag("Effects");
+                item.stewEffects = new ArrayList<>();
+
+                @SuppressWarnings("unchecked")
+                ListTag<CompoundTag> compoundTags = (ListTag<CompoundTag>) effects;
+                for (CompoundTag tag : compoundTags) {
+                    byte effectId = tag.getByte("EffectId");
+                    int effectDuration = tag.getInt("EffectDuration");
+                    item.stewEffects.add(new StewEffect(effectId, effectDuration));
+                }
+            }
+
             //TODO rest of item NBTs
 
         }
