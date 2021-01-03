@@ -20,6 +20,10 @@ public class Util {
     }
 
     public static UUID decodeUUID(int[] ints) {
+        if (ints.length < 4) {
+            return null;
+        }
+
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0, intsLength = ints.length; i < intsLength; i++) {
             int anInt = ints[i];

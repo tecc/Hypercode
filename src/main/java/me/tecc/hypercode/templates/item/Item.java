@@ -21,6 +21,7 @@ public class Item implements IItem {
 
     // Display & structure
     int hexColor;
+    int mapColor; // Map color
     TextComponent itemName;
     List<TextComponent> itemLore;
     int hideflags;
@@ -76,6 +77,14 @@ public class Item implements IItem {
     // Debug stick
     DebugProperty debugProperty;
 
+    // Compass
+    byte lodestoneTracked;
+    String lodestoneDimension;
+    Compass compass;
+
+    // Bundle
+    List<Item> items;
+
     public Item() {
         this.namedTag = null;
 
@@ -115,6 +124,10 @@ public class Item implements IItem {
         this.mapDecorations = new ArrayList<>();
         this.stewEffects = new ArrayList<>();
         this.debugProperty = null;
+        this.lodestoneTracked = 0;
+        this.lodestoneDimension = null;
+        this.compass = null;
+        this.items = new ArrayList<>();
     }
 
 }

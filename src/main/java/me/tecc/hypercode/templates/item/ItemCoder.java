@@ -25,15 +25,8 @@ public class ItemCoder {
             CompoundTag minecraftTag = compoundTag.getCompoundTag("tag");
             item.minecraftTag = minecraftTag;
 
-            // Damage NBT.
-            if (minecraftTag.containsKey("Damage")) {
-                item.itemDamage = minecraftTag.getInt("Damage");
-            }
-
-            // Unbreakable NBT.
-            if (minecraftTag.containsKey("Unbreakable")) {
-                item.itemUnbreakabke = minecraftTag.getByte("Unbreakable");
-            }
+            item.itemDamage = minecraftTag.getInt("Damage");
+            item.itemUnbreakabke = minecraftTag.getByte("Unbreakable");
 
             // CanDestroy NBT.
             if (minecraftTag.containsKey("CanDestroy")) {
@@ -48,19 +41,15 @@ public class ItemCoder {
                 }
             }
 
-            // CustomModelData NBT
-            if (minecraftTag.containsKey("CustomModelData")) {
-                item.itemCustomModelData = minecraftTag.getInt("CustomModelData");
-            }
+            item.itemCustomModelData = minecraftTag.getInt("CustomModelData");
 
             // Display NBT.
             if (minecraftTag.containsKey("display")) {
                 CompoundTag display = minecraftTag.getCompoundTag("display");
 
                 // Hex color.
-                if (display.containsKey("color")) {
-                    item.hexColor = display.getInt("color");
-                }
+                item.hexColor = display.getInt("color");
+                item.mapColor = display.getInt("MapColor");
 
                 // Item name.
                 if (display.containsKey("Name")) {
@@ -87,9 +76,7 @@ public class ItemCoder {
             }
 
             // Hideflags NBT.
-            if (minecraftTag.containsKey("HideFlags")) {
-                item.hideflags = minecraftTag.getInt("HideFlags");
-            }
+            item.hideflags = minecraftTag.getInt("HideFlags");
 
             // CanPlaceOn NBT
             if (minecraftTag.containsKey("CanPlaceOn")) {
@@ -134,9 +121,7 @@ public class ItemCoder {
                 }
             }
 
-            if (minecraftTag.containsKey("RepairCost")) {
-                item.repairCost = minecraftTag.getInt("RepairCost");
-            }
+            item.repairCost = minecraftTag.getInt("RepairCost");
 
             // Attribute
             if (minecraftTag.containsKey("AttributeModifiers")) {
@@ -178,13 +163,8 @@ public class ItemCoder {
                 }
             }
 
-            if (minecraftTag.containsKey("Potion")) {
-                item.potion = minecraftTag.getString("Potion");
-            }
-
-            if (minecraftTag.containsKey("CustomPotionColor")) {
-                item.customPotionColor = minecraftTag.getInt("CustomPotionColor");
-            }
+            item.potion = minecraftTag.getString("Potion");
+            item.customPotionColor = minecraftTag.getInt("CustomPotionColor");
 
             // Crossbow
             if (minecraftTag.containsKey("ChargedProjectiles")) {
@@ -199,26 +179,14 @@ public class ItemCoder {
                 }
             }
 
-            if (minecraftTag.containsKey("Charged")) {
-                item.charged = minecraftTag.getByte("Charged");
-            }
+            item.charged = minecraftTag.getByte("Charged");
 
             // Written Books
-            if (minecraftTag.containsKey("resolved")) {
-                item.resolved = minecraftTag.getByte("resolved");
-            }
+            item.resolved = minecraftTag.getByte("resolved");
+            item.generation = minecraftTag.getInt("generation");
+            item.author = minecraftTag.getString("author");
+            item.title = minecraftTag.getString("title");
 
-            if (minecraftTag.containsKey("generation")) {
-                item.generation = minecraftTag.getInt("generation");
-            }
-
-            if (minecraftTag.containsKey("author")) {
-                item.author = minecraftTag.getString("author");
-            }
-
-            if (minecraftTag.containsKey("title")) {
-                item.title = minecraftTag.getString("title");
-            }
 
             if (minecraftTag.containsKey("pages")) {
                 ListTag<?> pages = minecraftTag.getListTag("pages");
@@ -239,17 +207,12 @@ public class ItemCoder {
             if (minecraftTag.containsKey("SkullOwner")) {
                 CompoundTag skullOwner = minecraftTag.getCompoundTag("SkullOwner");
 
-                UUID uuid = null;
-                String ownerName = null;
+                UUID uuid = Util.decodeUUID(skullOwner.getIntArray("Id"));
+                String ownerName = skullOwner.getString("Name");
+
                 CompoundTag properties = null;
                 List<SkullTexture> skullTextureList = new ArrayList<>();
 
-                if (skullOwner.containsKey("Id")) {
-                    uuid = Util.decodeUUID(skullOwner.getIntArray("Id"));
-                }
-                if (skullOwner.containsKey("Name")) {
-                    ownerName = skullOwner.getString("Name");
-                }
                 if (skullOwner.containsKey("Properties")) {
                     properties = skullOwner.getCompoundTag("Properties");
                 }
@@ -262,16 +225,8 @@ public class ItemCoder {
                         ListTag<CompoundTag> compoundTags = (ListTag<CompoundTag>) textures;
 
                         for (CompoundTag tag : compoundTags) {
-                            String signature = "";
-                            String encodedValue = "";
-
-                            if (tag.containsKey("Signature")) {
-                                signature = tag.getString("Signature");
-                            }
-                            if (tag.containsKey("Value")) {
-                                encodedValue = tag.getString("Value");
-                            }
-
+                            String signature = tag.getString("Signature");
+                            String encodedValue = tag.getString("Value");
                             skullTextureList.add(new SkullTexture(signature, encodedValue));
                         }
                     }
@@ -288,12 +243,9 @@ public class ItemCoder {
             }
             if (minecraftTag.containsKey("Fireworks")) {
                 CompoundTag fireworks = minecraftTag.getCompoundTag("Fireworks");
-                byte flight = 0;
+                byte flight = fireworks.getByte("Flight");
                 List<FireworkExplosion> fireworkExplosions = new ArrayList<>();
 
-                if (fireworks.containsKey("Flight")) {
-                    flight = fireworks.getByte("Flight");
-                }
                 if (fireworks.containsKey("Explosions")) {
                     ListTag<?> explosions = minecraftTag.getListTag("Explosions");
 
@@ -313,19 +265,11 @@ public class ItemCoder {
             }
 
             // Bucket of Fish
-            if (minecraftTag.containsKey("BucketVariantTag")) {
-                item.bucketVariantTag = minecraftTag.getInt("BucketVariantTag");
-            }
+            item.bucketVariantTag = minecraftTag.getInt("BucketVariantTag");
 
             // Maps
-            if (minecraftTag.containsKey("map")) {
-                item.map = minecraftTag.getString("map");
-            }
-
-            // Map scale
-            if (minecraftTag.containsKey("map_scale_direction")) {
-                item.mapScaleDirection = minecraftTag.getString("map_scale_direction");
-            }
+            item.map = minecraftTag.getString("map");
+            item.mapScaleDirection = minecraftTag.getString("map_scale_direction");
 
             // Map decorations
             if (minecraftTag.containsKey("Decorations")) {
@@ -362,18 +306,35 @@ public class ItemCoder {
             // Debug Sticks
             if (minecraftTag.containsKey("DebugProperty")) {
                 CompoundTag debugProperty = minecraftTag.getCompoundTag("DebugProperty");
-                String blockId = null;
-                if (debugProperty.containsKey("BlockID")) {
-                    blockId = debugProperty.getString("BlockId");
-                }
-
+                String blockId = debugProperty.getString("BlockId");
                 item.debugProperty = new DebugProperty(debugProperty, blockId);
             }
 
-            //TODO rest of item NBTs
+            // Compass
+            item.lodestoneTracked = minecraftTag.getByte("LodestoneTracked");
+            item.lodestoneDimension = minecraftTag.getString("LodestoneDimension");
 
+            if (minecraftTag.containsKey("LodestonePos")) {
+                CompoundTag lodestonePos = minecraftTag.getCompoundTag("LodestonePos");
+                int x = lodestonePos.getInt("x");
+                int y = lodestonePos.getInt("y");
+                int z = lodestonePos.getInt("z");
+
+                item.compass = new Compass(x, y, z);
+            }
+
+            // Bundles
+            if (minecraftTag.containsKey("Items")) {
+                ListTag<?> items = minecraftTag.getListTag("Items");
+                item.items = new ArrayList<>();
+
+                @SuppressWarnings("unchecked")
+                ListTag<CompoundTag> compoundTags = (ListTag<CompoundTag>) items;
+                for (CompoundTag tag : compoundTags) {
+                    item.items.add(ItemCoder.decode(tag));
+                }
+            }
         }
-
         return item;
     }
 
@@ -400,10 +361,10 @@ public class ItemCoder {
     }
 
     public static CompoundTag encode(Item item) {
-        CompoundTag tag = new CompoundTag();
+        CompoundTag minecraftTag = item.minecraftTag;
 
+        //TODO Extra encoders
 
-
-        return tag;
+        return minecraftTag;
     }
 }
