@@ -41,6 +41,12 @@ public class Item implements IItem {
     List<CompoundTag> chargedProjectiles;
     byte charged;
 
+    byte resolved;
+    int generation;
+    String author;
+    String title;
+    List<TextComponent> pages;
+
     public Item() {
         this.namedTag = null;
 

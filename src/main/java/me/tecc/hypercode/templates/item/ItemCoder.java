@@ -106,6 +106,7 @@ public class ItemCoder {
 
             }
 
+            // Enchantments
             if (minecraftTag.containsKey("Enchantments")) {
                 ListTag<?> enchantments = minecraftTag.getListTag("Enchantments");
                 item.enchantments = new ArrayList<>();
@@ -138,6 +139,7 @@ public class ItemCoder {
                 item.repairCost = minecraftTag.getInt("RepairCost");
             }
 
+            // Attribute
             if (minecraftTag.containsKey("AttributeModifiers")) {
                 ListTag<?> attributeModifiers = minecraftTag.getListTag("AttributeModifiers");
                 item.attributeModifiers = new ArrayList<>();
@@ -157,6 +159,7 @@ public class ItemCoder {
                 }
             }
 
+            // Potions
             if (minecraftTag.containsKey("CustomPotionEffects")) {
                 ListTag<?> customPotionEffects = minecraftTag.getListTag("CustomPotionEffects");
                 item.customPotionEffects = new ArrayList<>();
@@ -184,6 +187,7 @@ public class ItemCoder {
                 item.customPotionColor = minecraftTag.getInt("CustomPotionColor");
             }
 
+            // Crossbow
             if (minecraftTag.containsKey("ChargedProjectiles")) {
                 ListTag<?> chargedProjectiles = minecraftTag.getListTag("ChargedProjectiles");
                 item.chargedProjectiles = new ArrayList<>();
@@ -199,6 +203,39 @@ public class ItemCoder {
             if (minecraftTag.containsKey("Charged")) {
                 item.charged = minecraftTag.getByte("Charged");
             }
+
+            // Written Books
+            if (minecraftTag.containsKey("resolved")) {
+                item.resolved = minecraftTag.getByte("resolved");
+            }
+
+            if (minecraftTag.containsKey("generation")) {
+                item.generation = minecraftTag.getInt("generation");
+            }
+
+            if (minecraftTag.containsKey("author")) {
+                item.author = minecraftTag.getString("author");
+            }
+
+            if (minecraftTag.containsKey("title")) {
+                item.title = minecraftTag.getString("title");
+            }
+
+            if (minecraftTag.containsKey("pages")) {
+                ListTag<?> pages = minecraftTag.getListTag("pages");
+                item.pages = new ArrayList<>();
+
+                // Translating NBT into JSON components.
+                @SuppressWarnings("unchecked")
+                ListTag<StringTag> stringTags = (ListTag<StringTag>) pages;
+
+                for (StringTag stringTag : stringTags) {
+                    String value = stringTag.getValue();
+                    BaseComponent[] parse = ComponentSerializer.parse(value);
+                    item.pages.add(new TextComponent(parse));
+                }
+            }
+
             //TODO rest of item NBTs
 
         }
