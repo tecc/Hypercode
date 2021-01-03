@@ -73,6 +73,9 @@ public class Item implements IItem {
     // Stew
     List<StewEffect> stewEffects;
 
+    // Debug stick
+    DebugProperty debugProperty;
+
     public Item() {
         this.namedTag = null;
 
@@ -111,6 +114,7 @@ public class Item implements IItem {
         this.mapScaleDirection = null;
         this.mapDecorations = new ArrayList<>();
         this.stewEffects = new ArrayList<>();
+        this.debugProperty = null;
     }
 
 }

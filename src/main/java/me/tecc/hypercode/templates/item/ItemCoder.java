@@ -359,6 +359,17 @@ public class ItemCoder {
                 }
             }
 
+            // Debug Sticks
+            if (minecraftTag.containsKey("DebugProperty")) {
+                CompoundTag debugProperty = minecraftTag.getCompoundTag("DebugProperty");
+                String blockId = null;
+                if (debugProperty.containsKey("BlockID")) {
+                    blockId = debugProperty.getString("BlockId");
+                }
+
+                item.debugProperty = new DebugProperty(debugProperty, blockId);
+            }
+
             //TODO rest of item NBTs
 
         }
