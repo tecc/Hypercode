@@ -50,12 +50,14 @@ public class Item implements IItem {
     FireworkExplosion fireworkExplosion;
     Firework fireworks;
 
+    CompoundTag entityTag;
+
     public Item() {
         this.namedTag = null;
 
         this.minecraftId =  null;
         this.minecraftCount = 0;
-        this.minecraftTag = new CompoundTag();
+        this.minecraftTag = null;
         this.hexColor = 0;
         this.itemName = null;
         this.itemLore = new ArrayList<>();
@@ -74,6 +76,15 @@ public class Item implements IItem {
         this.customPotionColor = 0;
         this.chargedProjectiles = new ArrayList<>();
         this.charged = 0;
+        this.resolved = 0;
+        this.generation = 0;
+        this.author = null;
+        this.title = null;
+        this.pages = new ArrayList<>();
+        this.skullMeta = null;
+        this.fireworkExplosion = null;
+        this.fireworks = null;
+        this.entityTag = null;
     }
 
 }

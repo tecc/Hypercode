@@ -5,7 +5,6 @@ import me.tecc.hypercode.language.PipeResult;
 import me.tecc.hypercode.language.lexing.LexingError;
 import me.tecc.hypercode.language.parsing.ParsingError;
 import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;

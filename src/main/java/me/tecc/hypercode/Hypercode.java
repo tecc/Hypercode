@@ -1,19 +1,14 @@
 package me.tecc.hypercode;
 
-import com.google.gson.JsonObject;
 import me.tecc.hypercode.cli.CLICommand;
 import me.tecc.hypercode.cli.CompileCommand;
 import me.tecc.hypercode.cli.HelpCommand;
 import me.tecc.hypercode.cli.TemplateCommand;
-import me.tecc.hypercode.templates.Template;
-import me.tecc.hypercode.templates.TemplateCoder;
 import org.apache.commons.cli.ParseException;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.IntFunction;
 import java.util.stream.Collectors;
 
 public class Hypercode {

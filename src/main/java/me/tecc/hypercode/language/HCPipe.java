@@ -1,11 +1,13 @@
 package me.tecc.hypercode.language;
 
-import com.google.gson.JsonObject;
 import me.tecc.hypercode.language.compiling.Compiler;
-import me.tecc.hypercode.language.lexing.*;
-import me.tecc.hypercode.language.parsing.*;
+import me.tecc.hypercode.language.lexing.Lexer;
+import me.tecc.hypercode.language.lexing.LexingError;
+import me.tecc.hypercode.language.lexing.Token;
+import me.tecc.hypercode.language.parsing.AbstractSyntaxTree;
+import me.tecc.hypercode.language.parsing.Parser;
+import me.tecc.hypercode.language.parsing.ParsingError;
 import me.tecc.hypercode.templates.Template;
-import me.tecc.hypercode.language.compiling.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +17,9 @@ import java.util.List;
  * Lexes, parses and compiles code all at once.
  */
 public class HCPipe {
-    private Lexer lexer;
-    private Parser parser;
-    private Compiler compiler;
+    private final Lexer lexer;
+    private final Parser parser;
+    private final Compiler compiler;
 
     public HCPipe() {
         this.lexer = new Lexer();

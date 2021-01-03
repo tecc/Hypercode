@@ -307,6 +307,11 @@ public class ItemCoder {
                 item.fireworks = new Firework(flight, fireworkExplosions);
             }
 
+            // Entity Tag
+            if (minecraftTag.containsKey("EntityTag")) {
+                item.entityTag = minecraftTag.getCompoundTag("EntityTag");
+            }
+
             //TODO rest of item NBTs
 
         }

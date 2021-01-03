@@ -1,6 +1,6 @@
 package me.tecc.hypercode.language.parsing;
 
-import me.tecc.hypercode.language.lexing.*;
+import me.tecc.hypercode.language.lexing.Token;
 
 import java.util.List;
 
