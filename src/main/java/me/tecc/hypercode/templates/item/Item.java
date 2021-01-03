@@ -65,6 +65,11 @@ public class Item implements IItem {
     // Fish
     int bucketVariantTag;
 
+    // Maps
+    String map;
+    String mapScaleDirection;
+    List<MapDecoration> mapDecorations;
+
     public Item() {
         this.namedTag = null;
 

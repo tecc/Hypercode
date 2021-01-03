@@ -316,6 +316,35 @@ public class ItemCoder {
             if (minecraftTag.containsKey("BucketVariantTag")) {
                 item.bucketVariantTag = minecraftTag.getInt("BucketVariantTag");
             }
+
+            // Maps
+            if (minecraftTag.containsKey("map")) {
+                item.map = minecraftTag.getString("map");
+            }
+
+            // Map scale
+            if (minecraftTag.containsKey("map_scale_direction")) {
+                item.mapScaleDirection = minecraftTag.getString("map_scale_direction");
+            }
+
+            // Map decorations
+            if (minecraftTag.containsKey("Decorations")) {
+                ListTag<?> decorations = minecraftTag.getListTag("Decorations");
+                item.mapDecorations = new ArrayList<>();
+
+                @SuppressWarnings("unchecked")
+                ListTag<CompoundTag> compoundTags = (ListTag<CompoundTag>) decorations;
+                for (CompoundTag tag : compoundTags) {
+                    String id = tag.getString("id");
+                    byte type = tag.getByte("type");
+                    double x = tag.getDouble("x");
+                    double z = tag.getDouble("z");
+                    double rot = tag.getDouble("rot");
+
+                    item.mapDecorations.add(new MapDecoration(id, type, x, z, rot));
+                }
+            }
+
             //TODO rest of item NBTs
 
         }
