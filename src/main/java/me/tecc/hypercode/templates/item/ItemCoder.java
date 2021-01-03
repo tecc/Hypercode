@@ -279,11 +279,61 @@ public class ItemCoder {
 
                 item.skullMeta = new SkullMeta(uuid, ownerName, skullTextureList);
             }
+
+
+            // Fireworks
+            if (minecraftTag.containsKey("Explosion")) {
+                CompoundTag explosion = minecraftTag.getCompoundTag("Explosion");
+                item.fireworkExplosion = decodeFireworkExplosion(explosion);
+            }
+            if (minecraftTag.containsKey("Fireworks")) {
+                CompoundTag fireworks = minecraftTag.getCompoundTag("Fireworks");
+                byte flight = 0;
+                List<FireworkExplosion> fireworkExplosions = new ArrayList<>();
+
+                if (fireworks.containsKey("Flight")) {
+                    flight = fireworks.getByte("Flight");
+                }
+                if (fireworks.containsKey("Explosions")) {
+                    ListTag<?> explosions = minecraftTag.getListTag("Explosions");
+
+                    @SuppressWarnings("unchecked")
+                    ListTag<CompoundTag> compoundTags = (ListTag<CompoundTag>) explosions;
+                    for (CompoundTag tag : compoundTags) {
+                        fireworkExplosions.add(decodeFireworkExplosion(tag));
+                    }
+
+                }
+                item.fireworks = new Firework(flight, fireworkExplosions);
+            }
+
             //TODO rest of item NBTs
 
         }
 
         return item;
+    }
+
+    private static FireworkExplosion decodeFireworkExplosion(CompoundTag explosion) {
+        byte flicker = 0;
+        byte trail = 0;
+        int[] colors = new int[] {};
+        int[] fadeColors = new int[] {};
+
+        if (explosion.containsKey("Flicker")) {
+            flicker = explosion.getByte("Flicker");
+        }
+        if (explosion.containsKey("Trail")) {
+            trail = explosion.getByte("Trail");
+        }
+        if (explosion.containsKey("Colors")) {
+            colors = explosion.getIntArray("Colors");
+        }
+        if (explosion.containsKey("FadeColors")) {
+            fadeColors = explosion.getIntArray("FadeColors");
+        }
+
+        return new FireworkExplosion(flicker, trail, colors, fadeColors);
     }
 
     public static CompoundTag encode(Item item) {

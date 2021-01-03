@@ -1,9 +1,6 @@
 package me.tecc.hypercode.templates.item;
 
-import me.tecc.hypercode.templates.item.meta.AttributeModifier;
-import me.tecc.hypercode.templates.item.meta.CustomPotionEffect;
-import me.tecc.hypercode.templates.item.meta.Enchantment;
-import me.tecc.hypercode.templates.item.meta.SkullMeta;
+import me.tecc.hypercode.templates.item.meta.*;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.querz.nbt.io.NamedTag;
 import net.querz.nbt.tag.CompoundTag;
@@ -50,30 +47,33 @@ public class Item implements IItem {
 
     SkullMeta skullMeta;
 
+    FireworkExplosion fireworkExplosion;
+    Firework fireworks;
+
     public Item() {
         this.namedTag = null;
 
         this.minecraftId =  null;
-        this.minecraftCount = -1;
+        this.minecraftCount = 0;
         this.minecraftTag = new CompoundTag();
-        this.hexColor = -1;
+        this.hexColor = 0;
         this.itemName = null;
         this.itemLore = new ArrayList<>();
-        this.hideflags = -1;
-        this.itemDamage = -1;
-        this.itemUnbreakabke = -1;
+        this.hideflags = 0;
+        this.itemDamage = 0;
+        this.itemUnbreakabke = 0;
         this.itemCanDestroy = new ArrayList<>();
-        this.itemCustomModelData = -1;
+        this.itemCustomModelData = 0;
         this.itemCanPlaceOn = new ArrayList<>();
         this.enchantments = new ArrayList<>();
         this.storedEnchantments = new ArrayList<>();
-        this.repairCost = -1;
+        this.repairCost = 0;
         this.attributeModifiers = new ArrayList<>();
         this.customPotionEffects = new ArrayList<>();
         this.potion = null;
-        this.customPotionColor = -1;
+        this.customPotionColor = 0;
         this.chargedProjectiles = new ArrayList<>();
-        this.charged = -1;
+        this.charged = 0;
     }
 
 }
