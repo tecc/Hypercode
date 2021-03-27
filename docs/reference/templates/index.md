@@ -91,16 +91,16 @@ All numbers are stored as 64-bit signed integers.
 | `x`        | The X coordinate          | Double   |
 | `y`        | The Y coordinate          | Double   |
 | `z`        | The Z coordinate          | Double   |
-| `pitch`    | The Pitch of the locaiton | Double   |
-| `yaw`      | The Yaw of the location   | Double   |
+| `pitch`    | The Pitch of the locaiton | Float    |
+| `yaw`      | The Yaw of the location   | Float    |
 
 ### Sounds
 
 | Data       | Description                             | Type                            |
 |------------|-----------------------------------------|---------------------------------|
 | `sound`    | The ID of the sound to be played        | See below                       |
-| `pitch`    | The pitch of the sound (Default: 1.0)   | Double                          |
-| `vol`      | The volume of the sound  (Default: 2.0) | Double                          |
+| `pitch`    | The pitch of the sound (Default: 1.0)   | Float                           |
+| `vol`      | The volume of the sound  (Default: 2.0) | Float                           |
 
 <details>
 <summary>Sound types</summary>
